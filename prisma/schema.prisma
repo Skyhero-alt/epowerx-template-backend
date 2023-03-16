@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the schema for the clients table
+model Client {
+  id                        Int      @id @default(autoincrement())
+  name                      String
+  pocName                   String
+  pocDesignation            String
+  logoUrl                   String
+  valuePropositionHeader    String
+  valuePropositionSubheader String
+  explanationText           String
+  videoGallery              String[]
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sales Template</title>
+  </head>
+  <body>
+    <!-- Client Profile section -->
+    <h1><%= companyName %></h1>
+    <p>POC Name: <%= pocName %></p>
+    <p>Designation: <%= pocDesignation %></p>
+    <img src="<%= companyLogoUrl %>" alt="Company Logo" />
+
+    <!-- Header section -->
+    <h2><%= headerText %></h2>
+
+    <!-- Subheader section -->
+    <h3><%= subheaderText %></h3>
+
+    <!-- Free text section -->
+    <p><%= freeText %></p>
+
+    <!-- Video gallery section -->
+    <h3>Video Gallery</h3>
+    <div class="video-gallery">
+      <% videos.forEach(function(video) { %> <% if (video.orientation ===
+      'vertical') { %>
+      <video src="<%= video.url %>" height="400" width="300"></video>
+      <% } else { %>
+      <video src="<%= video.url %>" height="300" width="400"></video>
+      <% } %> <% }); %>
+    </div>
+
+    <!-- Calendar integration section -->
+    <h3>Book a Demo</h3>
+    <form action="/demo" method="POST">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+      <button type="submit">Book Demo</button>
+    </form>
+  </body>
+</html>
