@@ -63,7 +63,7 @@ app.get("/clients/:clientId", async (req, res) => {
 
 app.get("/my-protected-page", (req, res) => {
   const userIp = req.ip;
-  const allowedIp = "::ffff:127.0.0.1";
+  const allowedIp = `::ffff:${env(IP)}`;
 
   if (userIp == allowedIp) {
     res.send({ comp: "<FormPage />", ip: req.ip });
