@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const { PrismaClient } = require("@prisma/client");
 const cors = require("cors");
+const dotenv = require("dotenv").config();
 
 app.use(express.json());
 app.use(
@@ -63,7 +64,7 @@ app.get("/clients/:clientId", async (req, res) => {
 
 app.get("/my-protected-page", (req, res) => {
   const userIp = req.ip;
-  const allowedIp = `::ffff:${env(IP)}`;
+  const allowedIp = `::ffff:${process.env.IP}`;
 
   if (userIp == allowedIp) {
     res.send({ comp: "<FormPage />", ip: req.ip });
